@@ -103,4 +103,6 @@
   # (e.g. man configuration.nix or on https://nixos.org/nixos/options.html).
   system.stateVersion = "20.09"; # Did you read the comment?
 
+  # https://mirrors.bfsu.edu.cn/help/nix/
+  nix.binaryCaches = [ "https://mirrors.bfsu.edu.cn/nix-channels/store" ];
 }
