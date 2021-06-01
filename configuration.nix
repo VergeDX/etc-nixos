@@ -6,7 +6,8 @@
 
 {
   imports =
-    [ # Include the results of the hardware scan.
+    [
+      # Include the results of the hardware scan.
       ./hardware-configuration.nix
     ];
 
@@ -46,7 +47,7 @@
   # Enable the GNOME 3 Desktop Environment.
   services.xserver.displayManager.gdm.enable = true;
   services.xserver.desktopManager.gnome3.enable = true;
-  
+
 
   # Configure keymap in X11
   # services.xserver.layout = "us";
@@ -103,4 +104,3 @@
   system.stateVersion = "20.09"; # Did you read the comment?
 
 }
-
