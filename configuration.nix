@@ -64,9 +64,13 @@
   # services.xserver.libinput.enable = true;
 
   # Define a user account. Don't forget to set a password with ‘passwd’.
+  programs.fish.enable = true;
   users.users.vanilla = {
     isNormalUser = true;
     extraGroups = [ "wheel" ]; # Enable ‘sudo’ for the user.
+
+    # https://nixos.wiki/wiki/Fish
+    shell = pkgs.fish;
   };
 
   # List packages installed in system profile. To search, run:
