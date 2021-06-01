@@ -105,4 +105,7 @@
 
   # https://mirrors.bfsu.edu.cn/help/nix/
   nix.binaryCaches = [ "https://mirrors.bfsu.edu.cn/nix-channels/store" ];
+
+  # https://nixos.wiki/wiki/Linux_kernel
+  boot.kernelPackages = pkgs.linuxPackages_zen;
 }
