@@ -30,4 +30,8 @@
     [{ device = "/dev/disk/by-uuid/058c4cb2-5cef-479b-912f-5c9f80858893"; }];
 
   powerManagement.cpuFreqGovernor = lib.mkDefault "powersave";
+
+  # https://nixos.wiki/wiki/Bluetooth
+  hardware.bluetooth.enable = true;
+  services.blueman.enable = true;
 }
