@@ -119,4 +119,6 @@
 
   # https://nixos.wiki/wiki/Linux_kernel
   boot.kernelPackages = pkgs.linuxPackages_zen;
+
+  environment.systemPackages = [ pkgs.home-manager ];
 }
