@@ -71,6 +71,11 @@
 
     # https://nixos.wiki/wiki/Fish
     shell = pkgs.fish;
+
+    # https://nixos.org/manual/nixos/stable/#sec-user-management
+    openssh.authorizedKeys.keys = [
+      "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIDkqJWUyUO+WWHn+neCmrWDPatgVmyRnfMbLCxlpGvqO"
+    ];
   };
 
   # List packages installed in system profile. To search, run:
@@ -91,10 +96,11 @@
   # List services that you want to enable:
 
   # Enable the OpenSSH daemon.
-  # services.openssh.enable = true;
+  services.openssh.enable = true;
+  services.openssh.passwordAuthentication = false;
 
   # Open ports in the firewall.
-  # networking.firewall.allowedTCPPorts = [ ... ];
+  networking.firewall.allowedTCPPorts = [ 22 ];
   # networking.firewall.allowedUDPPorts = [ ... ];
   # Or disable the firewall altogether.
   # networking.firewall.enable = false;
