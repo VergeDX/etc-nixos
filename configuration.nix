@@ -120,4 +120,7 @@
   boot.kernelPackages = pkgs.linuxPackages_zen;
 
   environment.systemPackages = [ pkgs.home-manager ];
+
+  i18n.inputMethod.enabled = "ibus";
+  i18n.inputMethod.ibus.engines = [ pkgs.ibus-engines.libpinyin ];
 }
