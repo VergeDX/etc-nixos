@@ -67,7 +67,7 @@
   programs.fish.enable = true;
   users.users.vanilla = {
     isNormalUser = true;
-    extraGroups = [ "wheel" ]; # Enable ‘sudo’ for the user.
+    extraGroups = [ "wheel" "docker" ]; # Enable ‘sudo’ for the user.
 
     # https://nixos.wiki/wiki/Fish
     shell = pkgs.fish;
@@ -123,4 +123,7 @@
 
   i18n.inputMethod.enabled = "ibus";
   i18n.inputMethod.ibus.engines = [ pkgs.ibus-engines.libpinyin ];
+
+  # https://nixos.wiki/wiki/Docker
+  virtualisation.docker.enable = true;
 }
