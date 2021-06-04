@@ -34,4 +34,11 @@
   # https://nixos.wiki/wiki/Bluetooth
   hardware.bluetooth.enable = true;
   services.blueman.enable = true;
+
+  nixpkgs.config.allowUnfree = true;
+  # https://nixos.wiki/wiki/Nvidia
+  services.xserver.videoDrivers = [ "nvidia" ];
+  hardware.nvidia.prime.offload.enable = true;
+  hardware.nvidia.prime.intelBusId = "PCI:0:2:0";
+  hardware.nvidia.prime.nvidiaBusId = "PCI:1:0:0";
 }
