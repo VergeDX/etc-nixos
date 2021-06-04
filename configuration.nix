@@ -47,7 +47,9 @@
   # Enable the GNOME 3 Desktop Environment.
   services.xserver.displayManager.gdm.enable = true;
   services.xserver.desktopManager.gnome.enable = true;
-
+  # https://nixos.org/manual/nixos/stable/#sec-gnome-gdm
+  services.xserver.displayManager.gdm.nvidiaWayland = true;
+  hardware.nvidia.modesetting.enable = true;
 
   # Configure keymap in X11
   # services.xserver.layout = "us";
