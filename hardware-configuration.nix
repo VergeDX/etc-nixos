@@ -46,4 +46,9 @@
   hardware.opengl.driSupport32Bit = true;
   # https://nixos.wiki/wiki/Steam
   hardware.steam-hardware.enable = true;
+
+  # https://nixos.wiki/wiki/Accelerated_Video_Playback
+  hardware.opengl.enable = true;
+  hardware.opengl.extraPackages = with pkgs; [ intel-media-driver vaapiIntel vaapiVdpau libvdpau-va-gl intel-ocl ];
+  hardware.opengl.extraPackages32 = with pkgs; [ vaapiIntel libvdpau-va-gl vaapiVdpau ];
 }
