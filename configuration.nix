@@ -128,4 +128,7 @@
 
   # https://nixos.wiki/wiki/Docker
   virtualisation.docker.enable = true;
+
+  # https://nixos.org/manual/nixos/stable/#sec-installing-behind-proxy
+  networking.proxy.default = "socks5://localhost:1089";
 }
