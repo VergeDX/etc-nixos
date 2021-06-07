@@ -148,4 +148,10 @@
       # https://github.com/jluttine/nixos-configuration/blob/master/common.nix
       monitors_xml = builtins.readFile /home/vanilla/.config/monitors.xml; in
     [ "L+ /run/gdm/.config/monitors.xml - - - - ${pkgs.writeText "gdm-monitors.xml" monitors_xml}" ];
+
+
+  # https://nixos.wiki/wiki/Virtualbox
+  virtualisation.virtualbox.host.enable = true;
+  users.extraGroups.vboxusers.members = [ "vanilla" ];
+  virtualisation.virtualbox.host.enableExtensionPack = true;
 }
