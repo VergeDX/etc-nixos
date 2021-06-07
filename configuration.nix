@@ -113,7 +113,11 @@
   # this value at the release version of the first install of this system.
   # Before changing this value read the documentation for this option
   # (e.g. man configuration.nix or on https://nixos.org/nixos/options.html).
-  system.stateVersion = "21.05"; # Did you read the comment?
+  system.stateVersion = "20.09"; # Did you read the comment?
+
+  # https://nixos.wiki/wiki/Flakes
+  nix.package = pkgs.nixUnstable;
+  nix.extraOptions = "experimental-features = nix-command flakes";
 
   # https://mirrors.bfsu.edu.cn/help/nix/
   nix.binaryCaches = [ "https://mirrors.bfsu.edu.cn/nix-channels/store" ];
