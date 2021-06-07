@@ -134,7 +134,7 @@
   virtualisation.docker.enable = true;
 
   # https://nixos.org/manual/nixos/stable/#sec-installing-behind-proxy
-  networking.proxy.default = "socks5://localhost:1089";
+  networking.proxy.default = "http://localhost:8889";
 
   programs.neovim.enable = true;
   programs.neovim.viAlias = true;
