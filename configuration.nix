@@ -138,4 +138,13 @@
 
   programs.neovim.enable = true;
   programs.neovim.viAlias = true;
+
+  # https://discourse.nixos.org/t/gdm-monitor-configuration/6356
+  # https://github.com/NixOS/nixpkgs/pull/107850
+  # https://discourse.nixos.org/t/in-configuration-nix-can-i-read-a-value-from-a-file/4809
+  systemd.tmpfiles.rules =
+    let
+      # https://github.com/jluttine/nixos-configuration/blob/master/common.nix
+      monitors_xml = builtins.readFile /home/vanilla/.config/monitors.xml; in
+    [ "L+ /run/gdm/.config/monitors.xml - - - - ${pkgs.writeText "gdm-monitors.xml" monitors_xml}" ];
 }
