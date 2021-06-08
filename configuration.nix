@@ -152,4 +152,7 @@
   virtualisation.virtualbox.host.enable = true;
   users.extraGroups.vboxusers.members = [ "vanilla" ];
   virtualisation.virtualbox.host.enableExtensionPack = true;
+
+  # Required by https://github.com/blackjackshellac/eclipse
+  programs.gpaste.enable = true;
 }
