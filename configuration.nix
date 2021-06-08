@@ -31,6 +31,7 @@
 
   # Configure network proxy if necessary
   # networking.proxy.default = "http://user:password@proxy:port/";
+  networking.proxy.default = "http://localhost:8889";
   # networking.proxy.noProxy = "127.0.0.1,localhost,internal.domain";
 
   # Select internationalisation properties.
@@ -133,9 +134,6 @@
 
   # https://nixos.wiki/wiki/Docker
   virtualisation.docker.enable = true;
-
-  # https://nixos.org/manual/nixos/stable/#sec-installing-behind-proxy
-  networking.proxy.default = "http://localhost:8889";
 
   programs.neovim.enable = true;
   programs.neovim.viAlias = true;
