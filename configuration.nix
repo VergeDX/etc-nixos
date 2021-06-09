@@ -84,10 +84,7 @@
 
   # List packages installed in system profile. To search, run:
   # $ nix search wget
-  # environment.systemPackages = with pkgs; [
-  #   wget vim
-  #   firefox
-  # ];
+  environment.systemPackages = [ pkgs.home-manager ];
 
   # Some programs need SUID wrappers, can be configured further or are
   # started in user sessions.
@@ -126,8 +123,6 @@
 
   # https://nixos.wiki/wiki/Linux_kernel
   boot.kernelPackages = pkgs.linuxPackages_zen;
-
-  environment.systemPackages = [ pkgs.home-manager ];
 
   i18n.inputMethod.enabled = "ibus";
   i18n.inputMethod.ibus.engines = [ pkgs.ibus-engines.libpinyin ];
