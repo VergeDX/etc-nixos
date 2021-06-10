@@ -49,6 +49,8 @@
 
   # https://nixos.wiki/wiki/Accelerated_Video_Playback
   hardware.opengl.enable = true;
-  hardware.opengl.extraPackages = with pkgs; [ intel-media-driver vaapiIntel vaapiVdpau libvdpau-va-gl intel-ocl ];
-  hardware.opengl.extraPackages32 = with pkgs; [ vaapiIntel libvdpau-va-gl vaapiVdpau ];
+  hardware.opengl.extraPackages =
+    let vaapiIntel = pkgs.vaapiIntel.override { enableHybridCodec = true; };
+    in with pkgs; [ intel-media-driver vaapiIntel vaapiVdpau libvdpau-va-gl ];
+  hardware.opengl.extraPackages32 = with pkgs.pkgsi686Linux; [ vaapiIntel ];
 }
