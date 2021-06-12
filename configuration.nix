@@ -121,8 +121,10 @@
   # https://nixos.wiki/wiki/Linux_kernel
   boot.kernelPackages = pkgs.linuxPackages_zen;
 
-  i18n.inputMethod.enabled = "ibus";
-  i18n.inputMethod.ibus.engines = [ pkgs.ibus-engines.libpinyin ];
+  # i18n.inputMethod.enabled = "ibus";
+  # i18n.inputMethod.ibus.engines = [ pkgs.ibus-engines.rime ];
+  i18n.inputMethod.enabled = "fcitx5";
+  i18n.inputMethod.fcitx5.addons = [ pkgs.fcitx5-chinese-addons ];
 
   # https://nixos.wiki/wiki/Docker
   virtualisation.docker.enable = true;
