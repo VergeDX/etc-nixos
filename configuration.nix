@@ -128,6 +128,7 @@
 
   # https://nixos.wiki/wiki/Docker
   virtualisation.docker.enable = true;
+  boot.binfmt.emulatedSystems = [ "aarch64-linux" ];
 
   programs.neovim.enable = true;
   programs.neovim.viAlias = true;
