@@ -43,7 +43,18 @@
 
   # Enable the X11 windowing system.
   services.xserver.enable = true;
-
+  # https://nixos.wiki/wiki/Xorg
+  services.xserver.libinput.enable = true;
+  services.xserver.libinput.touchpad.accelProfile = "flat";
+  services.xserver.config = ''
+    Section "InputClass"
+      Identifier "mouse accel"
+      Driver "libinput"
+      MatchIsPointer "on"
+      Option "AccelProfile" "flat"
+      Option "AccelSpeed" "0"
+    EndSection
+  '';
 
   # Enable the GNOME 3 Desktop Environment.
   services.xserver.displayManager.gdm.enable = true;
@@ -144,4 +155,9 @@
 
   # Required by https://github.com/blackjackshellac/eclipse
   programs.gpaste.enable = true;
+
+  # https://search.nixos.org/options?channel=21.05&from=0&size=50&sort=relevance&query=wireshark
+  programs.wireshark.package = pkgs.wireshark;
+  programs.wireshark.enable = true;
+  services.geoip-updater.enable = true;
 }
