@@ -79,7 +79,7 @@
   programs.thefuck.enable = true;
   users.users.vanilla = {
     isNormalUser = true;
-    extraGroups = [ "wheel" "docker" ]; # Enable ‘sudo’ for the user.
+    extraGroups = [ "wheel" "docker" "libvirtd" ]; # Enable ‘sudo’ for the user.
 
     # https://nixos.wiki/wiki/Fish
     shell = pkgs.fish;
@@ -90,9 +90,12 @@
     ];
   };
 
+  # https://nixos.wiki/wiki/IOS
+  services.usbmuxd.enable = true;
+
   # List packages installed in system profile. To search, run:
   # $ nix search wget
-  environment.systemPackages = [ pkgs.home-manager pkgs.gjs ];
+  environment.systemPackages = with pkgs; [ home-manager gjs libimobiledevice ];
 
   # Some programs need SUID wrappers, can be configured further or are
   # started in user sessions.
@@ -140,6 +143,12 @@
   # https://nixos.wiki/wiki/Docker
   virtualisation.docker.enable = true;
   boot.binfmt.emulatedSystems = [ "aarch64-linux" ];
+  # https://nixos.wiki/wiki/Virt-manager
+  virtualisation.libvirtd.enable = true;
+  # https://nixos.wiki/wiki/Virtualbox
+  virtualisation.virtualbox.host.enable = true;
+  users.extraGroups.vboxusers.members = [ "vanilla" ];
+  virtualisation.virtualbox.host.enableExtensionPack = true;
 
   programs.neovim.enable = true;
   programs.neovim.viAlias = true;
