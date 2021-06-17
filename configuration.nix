@@ -65,7 +65,10 @@
   # services.xserver.xkbOptions = "eurosign:e";
 
   # Enable CUPS to print documents.
-  # services.printing.enable = true;
+  services.printing.enable = true;
+  # https://nixos.wiki/wiki/Printing
+  services.avahi.enable = true;
+  services.avahi.nssmdns = true;
 
   # Enable sound.
   # sound.enable = true;
