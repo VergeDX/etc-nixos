@@ -148,10 +148,6 @@
   boot.binfmt.emulatedSystems = [ "aarch64-linux" ];
   # https://nixos.wiki/wiki/Virt-manager
   virtualisation.libvirtd.enable = true;
-  # https://nixos.wiki/wiki/Virtualbox
-  virtualisation.virtualbox.host.enable = true;
-  users.extraGroups.vboxusers.members = [ "vanilla" ];
-  virtualisation.virtualbox.host.enableExtensionPack = true;
 
   programs.neovim.enable = true;
   programs.neovim.viAlias = true;
