@@ -82,7 +82,7 @@
   programs.thefuck.enable = true;
   users.users.vanilla = {
     isNormalUser = true;
-    extraGroups = [ "wheel" "docker" "libvirtd" ]; # Enable ‘sudo’ for the user.
+    extraGroups = [ "wheel" "libvirtd" ]; # Enable ‘sudo’ for the user.
 
     # https://nixos.wiki/wiki/Fish
     shell = pkgs.fish;
@@ -143,8 +143,9 @@
   i18n.inputMethod.enabled = "fcitx5";
   i18n.inputMethod.fcitx5.addons = [ pkgs.fcitx5-chinese-addons ];
 
-  # https://nixos.wiki/wiki/Docker
-  virtualisation.docker.enable = true;
+  # https://nixos.wiki/wiki/Podman
+  virtualisation.podman.enable = true;
+  virtualisation.podman.dockerCompat = true;
   boot.binfmt.emulatedSystems = [ "aarch64-linux" ];
   # https://nixos.wiki/wiki/Virt-manager
   virtualisation.libvirtd.enable = true;
