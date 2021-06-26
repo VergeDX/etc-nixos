@@ -4,6 +4,10 @@
 
 { config, pkgs, ... }:
 
+let
+  # https://userbase.kde.org/KDEConnect
+  kde-connect-port-range = { from = 1714; to = 1764; };
+in
 {
   imports =
     [
@@ -131,6 +135,8 @@
   # Open ports in the firewall.
   # networking.firewall.allowedTCPPorts = [ ... ];
   # networking.firewall.allowedUDPPorts = [ ... ];
+  networking.firewall.allowedTCPPortRanges = [ kde-connect-port-range ];
+  networking.firewall.allowedUDPPortRanges = [ kde-connect-port-range ];
   # Or disable the firewall altogether.
   # networking.firewall.enable = false;
 
