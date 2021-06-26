@@ -157,6 +157,8 @@ in
 
   # https://nixos.wiki/wiki/Linux_kernel
   boot.kernelPackages = pkgs.linuxPackages_zen;
+  # https://gist.github.com/manuelmazzuola/4ffa90f5f5d0ddacda96#file-configuration-nix-L22
+  boot.kernel.sysctl = { "kernel.sysrq" = 1; };
 
   # i18n.inputMethod.enabled = "ibus";
   # i18n.inputMethod.ibus.engines = [ pkgs.ibus-engines.rime ];
