@@ -191,4 +191,7 @@ in
   programs.wireshark.package = pkgs.wireshark;
   programs.wireshark.enable = true;
   services.geoip-updater.enable = true;
+
+  # https://nixos.org/manual/nixpkgs/stable/#submitting-changes-tested-with-sandbox
+  nix.useSandbox = true;
 }
