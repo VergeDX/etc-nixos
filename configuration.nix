@@ -47,18 +47,6 @@ in
 
   # Enable the X11 windowing system.
   services.xserver.enable = true;
-  # https://nixos.wiki/wiki/Xorg
-  services.xserver.libinput.enable = true;
-  services.xserver.libinput.touchpad.accelProfile = "flat";
-  services.xserver.config = ''
-    Section "InputClass"
-      Identifier "mouse accel"
-      Driver "libinput"
-      MatchIsPointer "on"
-      Option "AccelProfile" "flat"
-      Option "AccelSpeed" "0"
-    EndSection
-  '';
 
   # Enable the GNOME 3 Desktop Environment.
   services.xserver.displayManager.gdm.enable = true;
