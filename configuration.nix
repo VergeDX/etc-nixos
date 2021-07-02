@@ -182,4 +182,7 @@ in
 
   # https://nixos.org/manual/nixpkgs/stable/#submitting-changes-tested-with-sandbox
   nix.useSandbox = true;
+
+  # https://github.com/slacka/WoeUSB/issues/299
+  boot.supportedFilesystems = [ "ntfs" ];
 }
