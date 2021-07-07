@@ -121,7 +121,7 @@ in
   services.openssh.ports = [ 622 ];
 
   # Open ports in the firewall.
-  networking.firewall.allowedTCPPorts = [ 8080 ];
+  networking.firewall.allowedTCPPorts = [ 8080 25565 ];
   # networking.firewall.allowedUDPPorts = [ ... ];
   networking.firewall.allowedTCPPortRanges = [ kde-connect-port-range ];
   networking.firewall.allowedUDPPortRanges = [ kde-connect-port-range ];
