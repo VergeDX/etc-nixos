@@ -94,7 +94,7 @@ in
 
     # https://nixos.org/manual/nixos/stable/#sec-user-management
     openssh.authorizedKeys.keys = [
-      "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIDkqJWUyUO+WWHn+neCmrWDPatgVmyRnfMbLCxlpGvqO"
+      "ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABgQDfhqiK98OeYViT/jajm6o3GiC28vFiMgcYkpx2pbd6MbSkz+GNCpSKtD8T0nDxHFtVLKp7/iZztrVnh2s+yf3lwxmjH3U4Oepu41FzrIqQkUrog+yBWcpZXoFILqfdurLmibpdoV4J9NYJB7ARzQaeVXmMufs8f4dLfJvbV5y+rBIQPIKFdr41yGFvmbmQL0RR/uaVwwh22WYigbC8myuqkXAYEL+u6TbH2/5PzcNB8THnBni9w1CtS0mzu26oK5iYx2gUbt+x65OalRyzc/Nouwak1WHzbIE6YbHbFdQbbaWz4Jl7Im9WE7/xHPJJwPT07hfwwLTdfe0lqiujmLpJBZmahTolNiu4v2O3rw1zqdnuX39h9PMcqeBC1D1ahVk9HynJYDsb36mGttDmfseUDItQaB9qGNYteYk7ib9VB4wrxSBCMMUPli7V02UIJRRPOY4ZQoVa/j+88d1lMtx8f0iO2j3nsR3pZdYsUpCsMA7RkE+UF8qd4vFCvV3xOxs= neko@hydev.org"
     ];
   };
 
