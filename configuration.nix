@@ -7,6 +7,7 @@
 let
   # https://userbase.kde.org/KDEConnect
   kde-connect-port-range = { from = 1714; to = 1764; };
+  qemu-efi-aarch64 = pkgs.callPackage ./qemu-efi-aarch64.nix { };
 in
 {
   imports =
@@ -157,8 +158,13 @@ in
   virtualisation.podman.enable = true;
   virtualisation.podman.dockerCompat = true;
   boot.binfmt.emulatedSystems = [ "aarch64-linux" ];
+
   # https://nixos.wiki/wiki/Virt-manager
   virtualisation.libvirtd.enable = true;
+  virtualisation.libvirtd.qemuOvmf = false;
+  virtualisation.libvirtd.qemuVerbatimConfig = ''
+    nvram = [ "${qemu-efi-aarch64.out}/usr/share/AAVMF/AAVMF_CODE.fd:${qemu-efi-aarch64.out}/usr/share/AAVMF/AAVMF_VARS.fd" ]
+  '';
 
   programs.neovim.enable = true;
   programs.neovim.viAlias = true;
