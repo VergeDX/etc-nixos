@@ -160,6 +160,7 @@ in
   boot.binfmt.emulatedSystems = [ "aarch64-linux" ];
 
   # https://nixos.wiki/wiki/Virt-manager
+  boot.kernelModules = [ "kvm-amd" "kvm-intel" ];
   virtualisation.libvirtd.enable = true;
   virtualisation.libvirtd.qemuOvmf = false;
   virtualisation.libvirtd.qemuVerbatimConfig = ''
