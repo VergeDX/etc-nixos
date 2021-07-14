@@ -84,11 +84,9 @@ in
   programs.fish.enable = true;
   programs.thefuck.enable = true;
 
-  # https://nixos.wiki/wiki/Android
-  programs.adb.enable = true;
   users.users.vanilla = {
     isNormalUser = true;
-    extraGroups = [ "wheel" "libvirtd" "adbusers" ]; # Enable ‘sudo’ for the user.
+    extraGroups = [ "wheel" "libvirtd" ]; # Enable ‘sudo’ for the user.
 
     # https://nixos.wiki/wiki/Fish
     shell = pkgs.fish;
