@@ -34,6 +34,7 @@
   # https://nixos.wiki/wiki/Bluetooth
   hardware.bluetooth.enable = true;
   services.blueman.enable = true;
+  hardware.enableAllFirmware = true;
 
   nixpkgs.config.allowUnfree = true;
   # https://nixos.wiki/wiki/Nvidia
