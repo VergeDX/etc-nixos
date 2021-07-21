@@ -102,15 +102,7 @@ in
 
   # List packages installed in system profile. To search, run:
   # $ nix search wget
-  environment.systemPackages = with pkgs; [
-    home-manager
-    gjs
-    libimobiledevice
-
-    # https://github.com/bkchr/nixos-config/blob/master/system-with-gui-configuration.nix#L8
-    pkgs.tdesktop
-    (pkgs.makeAutostartItem { name = "telegramdesktop"; package = pkgs.tdesktop; })
-  ];
+  environment.systemPackages = with pkgs; [ home-manager gjs libimobiledevice ];
 
   # Some programs need SUID wrappers, can be configured further or are
   # started in user sessions.
