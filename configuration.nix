@@ -186,4 +186,8 @@ in
 
   # https://github.com/slacka/WoeUSB/issues/299
   boot.supportedFilesystems = [ "ntfs" ];
+
+  boot.plymouth.enable = true;
+  boot.plymouth.theme = "details";
+  boot.plymouth.themePackages = [ pkgs.libsForQt5.breeze-plymouth ];
 }
