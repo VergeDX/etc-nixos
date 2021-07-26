@@ -19,6 +19,7 @@ in
   # Use the systemd-boot EFI boot loader.
   boot.loader.systemd-boot.enable = true;
   boot.loader.efi.canTouchEfiVariables = true;
+  boot.loader.grub.font = "${pkgs.hack-font}/share/fonts/hack/Hack-Regular.ttf";
 
   # networking.hostName = "nixos"; # Define your hostname.
   # networking.wireless.enable = true;  # Enables wireless support via wpa_supplicant.
@@ -190,4 +191,5 @@ in
   boot.plymouth.enable = true;
   boot.plymouth.theme = "details";
   boot.plymouth.themePackages = [ pkgs.libsForQt5.breeze-plymouth ];
+  boot.plymouth.font = "${pkgs.hack-font}/share/fonts/hack/Hack-Regular.ttf";
 }
