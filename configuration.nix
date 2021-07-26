@@ -34,6 +34,10 @@ in
   # networking.interfaces.wlp0s20f0u2u1u2.useDHCP = true;
   networking.interfaces.wlp0s20f3.useDHCP = true;
 
+  # Use networkd instead of buggy dhcpcd.
+  networking.useNetworkd = true;
+  networking.dhcpcd.enable = false;
+
   # Configure network proxy if necessary
   # networking.proxy.default = "http://user:password@proxy:port/";
   networking.proxy.default = "http://localhost:8889";
