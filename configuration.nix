@@ -8,6 +8,7 @@ let
   # https://userbase.kde.org/KDEConnect
   kde-connect-port-range = { from = 1714; to = 1764; };
   qemu-efi-aarch64 = pkgs.callPackage ./qemu-efi-aarch64.nix { };
+  hack-regular-ttf = "${pkgs.hack-font}/share/fonts/hack/Hack-Regular.ttf";
 in
 {
   imports =
@@ -19,7 +20,7 @@ in
   # Use the systemd-boot EFI boot loader.
   boot.loader.systemd-boot.enable = true;
   boot.loader.efi.canTouchEfiVariables = true;
-  boot.loader.grub.font = "${pkgs.hack-font}/share/fonts/hack/Hack-Regular.ttf";
+  boot.loader.grub.font = hack-regular-ttf;
 
   # networking.hostName = "nixos"; # Define your hostname.
   # networking.wireless.enable = true;  # Enables wireless support via wpa_supplicant.
@@ -191,5 +192,5 @@ in
   boot.plymouth.enable = true;
   boot.plymouth.theme = "details";
   boot.plymouth.themePackages = [ pkgs.libsForQt5.breeze-plymouth ];
-  boot.plymouth.font = "${pkgs.hack-font}/share/fonts/hack/Hack-Regular.ttf";
+  boot.plymouth.font = hack-regular-ttf;
 }
