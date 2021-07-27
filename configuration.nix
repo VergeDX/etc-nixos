@@ -189,4 +189,9 @@ in
 
   # https://github.com/slacka/WoeUSB/issues/299
   boot.supportedFilesystems = [ "ntfs" ];
+
+  # boot.plymouth.enable = true;
+  # boot.plymouth.font = hack-regular-ttf;
+  # https://wiki.archlinux.org/title/Plymouth_(%E7%AE%80%E4%BD%93%E4%B8%AD%E6%96%87)
+  # boot.plymouth.theme = "script";
 }
