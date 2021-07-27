@@ -61,4 +61,7 @@
     let vaapiIntel = pkgs.vaapiIntel.override { enableHybridCodec = true; };
     in with pkgs; [ intel-media-driver vaapiIntel vaapiVdpau libvdpau-va-gl ];
   hardware.opengl.extraPackages32 = with pkgs.pkgsi686Linux; [ vaapiIntel ];
+
+  # https://www.howtogeek.com/323390/how-to-fix-windows-and-linux-showing-different-times-when-dual-booting/
+  services.localtime.enable = true;
 }
