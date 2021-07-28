@@ -62,6 +62,6 @@
     in with pkgs; [ intel-media-driver vaapiIntel vaapiVdpau libvdpau-va-gl ];
   hardware.opengl.extraPackages32 = with pkgs.pkgsi686Linux; [ vaapiIntel ];
 
-  # https://www.howtogeek.com/323390/how-to-fix-windows-and-linux-showing-different-times-when-dual-booting/
-  services.localtime.enable = true;
+  # https://nixos.wiki/wiki/Dual_Booting_NixOS_and_Windows
+  time.hardwareClockInLocalTime = true;
 }
