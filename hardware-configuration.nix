@@ -64,4 +64,8 @@
 
   # https://nixos.wiki/wiki/Dual_Booting_NixOS_and_Windows
   time.hardwareClockInLocalTime = true;
+
+  # https://github.com/NixOS/nixpkgs/issues/101281
+  hardware.xpadneo.enable = true;
+  services.hardware.xow.enable = true;
 }
