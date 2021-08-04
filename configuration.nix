@@ -189,6 +189,11 @@ in
     nvram = [ "${qemu-efi-aarch64.out}/usr/share/AAVMF/AAVMF_CODE.fd:${qemu-efi-aarch64.out}/usr/share/AAVMF/AAVMF_VARS.fd" ]
   '';
 
+  # https://nixos.wiki/wiki/Virtualbox
+  virtualisation.virtualbox.host.enable = true;
+  users.extraGroups.vboxusers.members = [ "vanilla" ];
+  virtualisation.virtualbox.host.package = pkgs.virtualboxWithExtpack;
+
   # https://github.com/NixOS/nixpkgs/issues/132389
   # https://github.com/NixOS/nixpkgs/pull/132522
   # programs.neovim.enable = true;
