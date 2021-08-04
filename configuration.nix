@@ -53,7 +53,7 @@ in
 
   # Configure network proxy if necessary
   # networking.proxy.default = "http://user:password@proxy:port/";
-  networking.proxy.default = "http://localhost:8889";
+  # networking.proxy.default = "http://localhost:8889";
   # networking.proxy.noProxy = "127.0.0.1,localhost,internal.domain";
 
   # Select internationalisation properties.
@@ -202,11 +202,11 @@ in
   # https://discourse.nixos.org/t/gdm-monitor-configuration/6356
   # https://github.com/NixOS/nixpkgs/pull/107850
   # https://discourse.nixos.org/t/in-configuration-nix-can-i-read-a-value-from-a-file/4809
-  systemd.tmpfiles.rules =
-    let
-      # https://github.com/jluttine/nixos-configuration/blob/master/common.nix
-      monitors_xml = builtins.readFile /home/vanilla/.config/monitors.xml; in
-    [ "L+ /run/gdm/.config/monitors.xml - - - - ${pkgs.writeText "gdm-monitors.xml" monitors_xml}" ];
+  # systemd.tmpfiles.rules =
+  #   let
+  #     # https://github.com/jluttine/nixos-configuration/blob/master/common.nix
+  #     monitors_xml = builtins.readFile /home/vanilla/.config/monitors.xml; in
+  #   [ "L+ /run/gdm/.config/monitors.xml - - - - ${pkgs.writeText "gdm-monitors.xml" monitors_xml}" ];
 
   # Required by https://github.com/blackjackshellac/eclipse
   programs.gpaste.enable = true;
