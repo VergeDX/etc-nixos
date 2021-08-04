@@ -189,8 +189,10 @@ in
     nvram = [ "${qemu-efi-aarch64.out}/usr/share/AAVMF/AAVMF_CODE.fd:${qemu-efi-aarch64.out}/usr/share/AAVMF/AAVMF_VARS.fd" ]
   '';
 
-  programs.neovim.enable = true;
-  programs.neovim.viAlias = true;
+  # https://github.com/NixOS/nixpkgs/issues/132389
+  # https://github.com/NixOS/nixpkgs/pull/132522
+  # programs.neovim.enable = true;
+  # programs.neovim.viAlias = true;
 
   # https://discourse.nixos.org/t/gdm-monitor-configuration/6356
   # https://github.com/NixOS/nixpkgs/pull/107850
