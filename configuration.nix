@@ -9,17 +9,6 @@ let
   kde-connect-port-range = { from = 1714; to = 1764; };
   qemu-efi-aarch64 = pkgs.callPackage ./qemu-efi-aarch64.nix { };
   hack-regular-ttf = "${pkgs.hack-font}/share/fonts/hack/Hack-Regular.ttf";
-
-  # https://github.com/NixOS/nixpkgs/commit/03100da5a714a2b6c5210ceb6af092073ba4fce5
-  # https://stackoverflow.com/questions/53864609/how-to-override-default-stable-nvidia-driver
-  pinnedKernelPackages = nixos-unstable-pinned.linuxPackages_zen;
-  nixos-unstable-pinned = import
-    (builtins.fetchTarball {
-      name = "nixos-unstable_nvidia-470-57_2021-07-19";
-      url = https://github.com/nixos/nixpkgs/archive/03100da5a714a2b6c5210ceb6af092073ba4fce5.tar.gz;
-      sha256 = "0bblrvhig7vwiq2lgjrl5ibil3sz7hj26gaip6y8wpd9xcjr3v7a";
-    })
-    { };
 in
 {
   imports =
@@ -161,11 +150,9 @@ in
   nix.extraOptions = "experimental-features = nix-command flakes";
 
   # https://nixos.wiki/wiki/Linux_kernel
-  boot.kernelPackages = pinnedKernelPackages; # pkgs.linuxPackages_zen;
-  nixpkgs.config.packageOverrides = pkgs: {
-    linuxPackages_zen = pinnedKernelPackages;
-    nvidia_x11 = nixos-unstable-pinned.nvidia_x11;
-  };
+  # https://github.com/NixOS/nixpkgs/issues/129233
+  # https://github.com/NixOS/nixpkgs/pull/128785#issuecomment-873219393
+  boot.kernelPackages = pkgs.linuxPackages_hardened; # pkgs.linuxPackages_zen;
 
   # https://gist.github.com/manuelmazzuola/4ffa90f5f5d0ddacda96#file-configuration-nix-L22
   boot.kernel.sysctl = { "kernel.sysrq" = 1; };
