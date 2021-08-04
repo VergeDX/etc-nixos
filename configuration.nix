@@ -152,12 +152,7 @@ in
   # https://nixos.wiki/wiki/Linux_kernel
   # https://github.com/NixOS/nixpkgs/issues/129233
   # https://github.com/NixOS/nixpkgs/pull/128785#issuecomment-873219393
-  boot.kernelPackages = pkgs.linuxPackages_hardened; # pkgs.linuxPackages_zen;
-
-  # https://github.com/NixOS/nixpkgs/issues/97682
-  security.chromiumSuidSandbox.enable = true;
-  # https://github.com/NixOS/nixpkgs/issues/89599#issuecomment-644532117
-  boot.kernel.sysctl."kernel.unprivileged_userns_clone" = 1;
+  boot.kernelPackages = pkgs.linuxPackages; # pkgs.linuxPackages_zen;
 
   # https://gist.github.com/manuelmazzuola/4ffa90f5f5d0ddacda96#file-configuration-nix-L22
   boot.kernel.sysctl = { "kernel.sysrq" = 1; };
