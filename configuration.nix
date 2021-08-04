@@ -154,6 +154,11 @@ in
   # https://github.com/NixOS/nixpkgs/pull/128785#issuecomment-873219393
   boot.kernelPackages = pkgs.linuxPackages_hardened; # pkgs.linuxPackages_zen;
 
+  # https://github.com/NixOS/nixpkgs/issues/97682
+  security.chromiumSuidSandbox.enable = true;
+  # https://github.com/NixOS/nixpkgs/issues/89599#issuecomment-644532117
+  boot.kernel.sysctl."kernel.unprivileged_userns_clone" = 1;
+
   # https://gist.github.com/manuelmazzuola/4ffa90f5f5d0ddacda96#file-configuration-nix-L22
   boot.kernel.sysctl = { "kernel.sysrq" = 1; };
   boot.kernelParams = [ "pcie_aspm.policy=performance" ];
@@ -179,7 +184,6 @@ in
   # https://nixos.wiki/wiki/Virtualbox
   virtualisation.virtualbox.host.enable = true;
   users.extraGroups.vboxusers.members = [ "vanilla" ];
-  virtualisation.virtualbox.host.package = pkgs.virtualboxWithExtpack;
 
   # https://github.com/NixOS/nixpkgs/issues/132389
   # https://github.com/NixOS/nixpkgs/pull/132522
