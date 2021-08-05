@@ -2,7 +2,7 @@
 # your system.  Help is available in the configuration.nix(5) man page
 # and in the NixOS manual (accessible by running ‘nixos-help’).
 
-{ config, pkgs, ... }:
+{ config, pkgs, lib, ... }:
 
 let
   # https://userbase.kde.org/KDEConnect
@@ -146,8 +146,12 @@ in
   system.stateVersion = "21.05"; # Did you read the comment?
 
   # https://nixos.wiki/wiki/Flakes
-  nix.package = pkgs.nixUnstable;
-  nix.extraOptions = "experimental-features = nix-command flakes";
+  # https://discourse.nixos.org/t/using-experimental-nix-features-in-nixos-and-when-they-will-land-in-stable/7401/3
+  nix = {
+    package = pkgs.nixFlakes;
+    extraOptions = lib.optionalString (config.nix.package == pkgs.nixFlakes)
+      "experimental-features = nix-command flakes";
+  };
 
   # https://nixos.wiki/wiki/Linux_kernel
   # https://github.com/NixOS/nixpkgs/issues/129233
