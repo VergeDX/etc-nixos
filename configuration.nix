@@ -183,6 +183,7 @@ in
   # https://nixos.wiki/wiki/Virtualbox
   virtualisation.virtualbox.host.enable = true;
   users.extraGroups.vboxusers.members = [ "vanilla" ];
+  virtualisation.virtualbox.host.enableExtensionPack = true;
 
   # https://github.com/NixOS/nixpkgs/issues/132389
   # https://github.com/NixOS/nixpkgs/pull/132522
