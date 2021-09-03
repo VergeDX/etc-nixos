@@ -212,8 +212,4 @@ in
   # boot.plymouth.font = hack-regular-ttf;
   # https://wiki.archlinux.org/title/Plymouth_(%E7%AE%80%E4%BD%93%E4%B8%AD%E6%96%87)
   # boot.plymouth.theme = "script";
-
-  # https://nixos.wiki/wiki/Yubikey
-  services.udev.packages = [ pkgs.yubikey-personalization ];
-  services.pcscd.enable = true;
 }
