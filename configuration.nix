@@ -210,4 +210,8 @@ in
 
   # https://github.com/slacka/WoeUSB/issues/299
   boot.supportedFilesystems = [ "ntfs" ];
+
+  # https://gist.github.com/shamil/62935d9b456a6f9877b5
+  # https://wiki.archlinux.org/title/Kernel_module_(%E7%AE%80%E4%BD%93%E4%B8%AD%E6%96%87)
+  boot.extraModprobeConfig = "options nbd max_part=8";
 }
