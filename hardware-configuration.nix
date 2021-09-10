@@ -11,7 +11,7 @@
 
   boot.initrd.availableKernelModules = [ "xhci_pci" "ahci" "nvme" "usbhid" "usb_storage" "sd_mod" "rtsx_pci_sdmmc" ];
   boot.initrd.kernelModules = [ ];
-  boot.kernelModules = [ "kvm-intel" ];
+  # boot.kernelModules = [ "kvm-intel" ];
   boot.extraModulePackages = [ ];
 
   fileSystems."/" =
@@ -90,4 +90,8 @@
   # https://discourse.nixos.org/t/update-microcode-microcodeintel-not-working/10856
   hardware.cpu.amd.updateMicrocode = true;
   hardware.cpu.intel.updateMicrocode = true;
+
+  # https://mnguyen.io/blog/running-nixos-in-production/
+  boot.kernelModules = [ "tcp_bbr" ];
+  boot.kernel.sysctl."net.ipv4.tcp_congestion_control" = "bbr";
 }
