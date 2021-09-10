@@ -86,4 +86,8 @@
   # https://nixos.wiki/wiki/Yubikey
   services.udev.packages = [ pkgs.yubikey-personalization ];
   services.pcscd.enable = true;
+
+  # https://discourse.nixos.org/t/update-microcode-microcodeintel-not-working/10856
+  hardware.cpu.amd.updateMicrocode = true;
+  hardware.cpu.intel.updateMicrocode = true;
 }
