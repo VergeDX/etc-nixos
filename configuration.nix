@@ -9,6 +9,7 @@
       ./services.nix
       ./virtualisation.nix
       ./programs.nix
+      ./nix.nix
 
       # Include the results of the hardware scan.
       ./hardware.nix
@@ -62,14 +63,6 @@
   # (e.g. man configuration.nix or on https://nixos.org/nixos/options.html).
   system.stateVersion = "21.05"; # Did you read the comment?
 
-  # https://nixos.wiki/wiki/Flakes
-  # https://discourse.nixos.org/t/using-experimental-nix-features-in-nixos-and-when-they-will-land-in-stable/7401/3
-  nix = {
-    package = pkgs.nixFlakes;
-    extraOptions = lib.optionalString (config.nix.package == pkgs.nixFlakes)
-      "experimental-features = nix-command flakes";
-  };
-
   # https://discourse.nixos.org/t/gdm-monitor-configuration/6356
   # https://github.com/NixOS/nixpkgs/pull/107850
   # https://discourse.nixos.org/t/in-configuration-nix-can-i-read-a-value-from-a-file/4809
@@ -77,7 +70,4 @@
     # https://github.com/jluttine/nixos-configuration/blob/master/common.nix
     let monitors_xml = builtins.readFile /home/vanilla/.config/monitors.xml; in
     [ "L+ /run/gdm/.config/monitors.xml - - - - ${pkgs.writeText "gdm-monitors.xml" monitors_xml}" ];
-
-  # https://nixos.org/manual/nixpkgs/stable/#submitting-changes-tested-with-sandbox
-  nix.useSandbox = true;
 }
