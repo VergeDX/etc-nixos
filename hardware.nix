@@ -77,8 +77,4 @@
   # https://discourse.nixos.org/t/update-microcode-microcodeintel-not-working/10856
   hardware.cpu.amd.updateMicrocode = true;
   hardware.cpu.intel.updateMicrocode = true;
-
-  # https://mnguyen.io/blog/running-nixos-in-production/
-  boot.kernelModules = [ "tcp_bbr" ];
-  boot.kernel.sysctl."net.ipv4.tcp_congestion_control" = "bbr";
 }
