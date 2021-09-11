@@ -7,18 +7,14 @@
     ./cpu.nix
     ./bluetooth.nix
     ./nvidia.nix
-    ./others.nix
+    ./steam.nix
+    ./yubikey.nix
   ];
 
   boot.initrd.availableKernelModules = [ "xhci_pci" "ahci" "nvme" "usbhid" "usb_storage" "sd_mod" "rtsx_pci_sdmmc" ];
   boot.initrd.kernelModules = [ ];
   # boot.kernelModules = [ "kvm-intel" ];
   boot.extraModulePackages = [ ];
-
-  # https://github.com/NixOS/nixpkgs/issues/25957
-  hardware.opengl.driSupport32Bit = true;
-  # https://nixos.wiki/wiki/Steam
-  hardware.steam-hardware.enable = true;
 
   # https://nixos.wiki/wiki/Accelerated_Video_Playback
   hardware.opengl.enable = true;
