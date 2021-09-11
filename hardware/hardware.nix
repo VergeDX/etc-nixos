@@ -4,14 +4,13 @@
     (modulesPath + "/installer/scan/not-detected.nix")
 
     ./disks.nix
+    ./cpu.nix
   ];
 
   boot.initrd.availableKernelModules = [ "xhci_pci" "ahci" "nvme" "usbhid" "usb_storage" "sd_mod" "rtsx_pci_sdmmc" ];
   boot.initrd.kernelModules = [ ];
   # boot.kernelModules = [ "kvm-intel" ];
   boot.extraModulePackages = [ ];
-
-  powerManagement.cpuFreqGovernor = lib.mkDefault "powersave";
 
   # https://nixos.wiki/wiki/Bluetooth
   hardware.bluetooth.enable = true;
@@ -63,8 +62,4 @@
   # https://nixos.wiki/wiki/Yubikey
   services.udev.packages = [ pkgs.yubikey-personalization ];
   services.pcscd.enable = true;
-
-  # https://discourse.nixos.org/t/update-microcode-microcodeintel-not-working/10856
-  hardware.cpu.amd.updateMicrocode = true;
-  hardware.cpu.intel.updateMicrocode = true;
 }
