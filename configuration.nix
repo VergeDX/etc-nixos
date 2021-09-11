@@ -193,8 +193,8 @@ in
 
   # https://github.com/NixOS/nixpkgs/issues/132389
   # https://github.com/NixOS/nixpkgs/pull/132522
-  # programs.neovim.enable = true;
-  # programs.neovim.viAlias = true;
+  programs.neovim.enable = true;
+  programs.neovim.viAlias = true;
 
   # https://discourse.nixos.org/t/gdm-monitor-configuration/6356
   # https://github.com/NixOS/nixpkgs/pull/107850
