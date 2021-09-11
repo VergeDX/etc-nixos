@@ -22,14 +22,8 @@
       options = [ "compress-force=zstd" "noatime" ];
     };
 
-  fileSystems."/boot" =
-    {
-      device = "/dev/disk/by-uuid/F934-BA50";
-      fsType = "vfat";
-    };
-
-  swapDevices =
-    [{ device = "/dev/disk/by-uuid/1b07ef58-fa1b-4e5e-a394-7a07a9229f07"; }];
+  fileSystems."/boot" = { device = "/dev/disk/by-uuid/F934-BA50"; fsType = "vfat"; };
+  swapDevices = [{ device = "/dev/disk/by-uuid/1b07ef58-fa1b-4e5e-a394-7a07a9229f07"; }];
 
   powerManagement.cpuFreqGovernor = lib.mkDefault "powersave";
 
