@@ -7,6 +7,7 @@ in
       ./boot.nix
       ./network.nix
       ./i18n.nix
+      ./xserver.nix
 
       # Include the results of the hardware scan.
       ./hardware.nix
@@ -14,18 +15,6 @@ in
 
   # Set your time zone.
   time.timeZone = "Asia/Shanghai";
-
-  # Enable the X11 windowing system.
-  services.xserver.enable = true;
-
-  # Enable the GNOME Desktop Environment.
-  services.xserver.displayManager.gdm.enable = true;
-  services.xserver.desktopManager.gnome.enable = true;
-
-  # Configure keymap in X11
-  services.xserver.layout = "us";
-  # https://wiki.archlinux.org/title/Xorg/Keyboard_configuration
-  # services.xserver.xkbOptions = "eurosign:e";
 
   # Enable CUPS to print documents.
   services.printing.enable = true;
@@ -46,9 +35,6 @@ in
     alsa.support32Bit = true;
     pulse.enable = true;
   };
-
-  # Enable touchpad support (enabled default in most desktopManager).
-  services.xserver.libinput.enable = true;
 
   # Define a user account. Don't forget to set a password with ‘passwd’.
   programs.fish.enable = true;
