@@ -62,7 +62,8 @@ in
   services.xserver.desktopManager.gnome.enable = true;
 
   # Configure keymap in X11
-  # services.xserver.layout = "us";
+  services.xserver.layout = "us";
+  # https://wiki.archlinux.org/title/Xorg/Keyboard_configuration
   # services.xserver.xkbOptions = "eurosign:e";
 
   # Enable CUPS to print documents.
