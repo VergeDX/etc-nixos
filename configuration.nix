@@ -39,10 +39,7 @@ in
 
   # Select internationalisation properties.
   i18n.defaultLocale = "en_US.UTF-8";
-  console = {
-    font = "${pkgs.hack-font}/share/fonts/hack/Hack-Regular.ttf";
-    keyMap = "us";
-  };
+  console.keyMap = "us";
 
   # Enable the X11 windowing system.
   services.xserver.enable = true;
