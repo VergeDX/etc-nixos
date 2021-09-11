@@ -1,6 +1,4 @@
 { config, pkgs, lib, ... }:
-let qemu-efi-aarch64 = pkgs.callPackage ./qemu-efi-aarch64.nix { };
-in
 {
   imports =
     [
@@ -9,6 +7,7 @@ in
       ./i18n.nix
       ./xserver.nix
       ./services.nix
+      ./virtualisation.nix
 
       # Include the results of the hardware scan.
       ./hardware.nix
@@ -77,24 +76,6 @@ in
     extraOptions = lib.optionalString (config.nix.package == pkgs.nixFlakes)
       "experimental-features = nix-command flakes";
   };
-
-  # https://nixos.wiki/wiki/Podman
-  virtualisation.podman.enable = true;
-  virtualisation.podman.dockerCompat = true;
-  boot.binfmt.emulatedSystems = [ "aarch64-linux" ];
-
-  # https://nixos.wiki/wiki/Virt-manager
-  boot.kernelModules = [ "kvm-intel" ];
-  virtualisation.libvirtd.enable = true;
-  virtualisation.libvirtd.qemuOvmf = false;
-  virtualisation.libvirtd.qemuVerbatimConfig = ''
-    nvram = [ "${qemu-efi-aarch64.out}/usr/share/AAVMF/AAVMF_CODE.fd:${qemu-efi-aarch64.out}/usr/share/AAVMF/AAVMF_VARS.fd" ]
-  '';
-
-  # https://nixos.wiki/wiki/Virtualbox
-  virtualisation.virtualbox.host.enable = true;
-  users.extraGroups.vboxusers.members = [ "vanilla" ];
-  virtualisation.virtualbox.host.enableExtensionPack = true;
 
   # https://github.com/NixOS/nixpkgs/issues/132389
   # https://github.com/NixOS/nixpkgs/pull/132522
