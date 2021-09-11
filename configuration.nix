@@ -73,7 +73,7 @@ in
   services.avahi.nssmdns = true;
 
   # Enable sound.
-  # sound.enable = true;
+  sound.enable = true;
   hardware.pulseaudio.enable = false;
 
   # https://nixos.wiki/wiki/PipeWire
