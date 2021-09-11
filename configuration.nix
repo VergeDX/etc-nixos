@@ -3,19 +3,14 @@ let
   # https://userbase.kde.org/KDEConnect
   kde-connect-port-range = { from = 1714; to = 1764; };
   qemu-efi-aarch64 = pkgs.callPackage ./qemu-efi-aarch64.nix { };
-  hack-regular-ttf = "${pkgs.hack-font}/share/fonts/hack/Hack-Regular.ttf";
 in
 {
   imports =
     [
+      ./boot.nix
       # Include the results of the hardware scan.
       ./hardware.nix
     ];
-
-  # Use the systemd-boot EFI boot loader.
-  boot.loader.systemd-boot.enable = true;
-  boot.loader.efi.canTouchEfiVariables = true;
-  boot.loader.grub.font = hack-regular-ttf;
 
   networking.hostName = "nixos"; # Define your hostname.
   networking.wireless.enable = true; # Enables wireless support via wpa_supplicant.
@@ -45,7 +40,7 @@ in
   # Select internationalisation properties.
   i18n.defaultLocale = "en_US.UTF-8";
   console = {
-    font = hack-regular-ttf;
+    font = "${pkgs.hack-font}/share/fonts/hack/Hack-Regular.ttf";
     keyMap = "us";
   };
 
@@ -154,15 +149,6 @@ in
       "experimental-features = nix-command flakes";
   };
 
-  # https://nixos.wiki/wiki/Linux_kernel
-  # https://github.com/NixOS/nixpkgs/issues/129233
-  # https://github.com/NixOS/nixpkgs/pull/128785#issuecomment-873219393
-  boot.kernelPackages = pkgs.linuxPackages; # pkgs.linuxPackages_zen;
-
-  # https://gist.github.com/manuelmazzuola/4ffa90f5f5d0ddacda96#file-configuration-nix-L22
-  boot.kernel.sysctl = { "kernel.sysrq" = 1; };
-  boot.kernelParams = [ "pcie_aspm.policy=performance" ];
-
   # i18n.inputMethod.enabled = "ibus";
   # i18n.inputMethod.ibus.engines = [ pkgs.ibus-engines.rime ];
   i18n.inputMethod.enabled = "fcitx5";
@@ -205,11 +191,4 @@ in
 
   # https://nixos.org/manual/nixpkgs/stable/#submitting-changes-tested-with-sandbox
   nix.useSandbox = true;
-
-  # https://github.com/slacka/WoeUSB/issues/299
-  boot.supportedFilesystems = [ "ntfs" ];
-
-  # https://gist.github.com/shamil/62935d9b456a6f9877b5
-  # https://wiki.archlinux.org/title/Kernel_module_(%E7%AE%80%E4%BD%93%E4%B8%AD%E6%96%87)
-  boot.extraModprobeConfig = "options nbd max_part=8";
 }
