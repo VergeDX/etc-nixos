@@ -6,6 +6,7 @@ in
     [
       ./boot.nix
       ./network.nix
+      ./i18n.nix
 
       # Include the results of the hardware scan.
       ./hardware.nix
@@ -13,10 +14,6 @@ in
 
   # Set your time zone.
   time.timeZone = "Asia/Shanghai";
-
-  # Select internationalisation properties.
-  i18n.defaultLocale = "en_US.UTF-8";
-  console.keyMap = "us";
 
   # Enable the X11 windowing system.
   services.xserver.enable = true;
@@ -110,11 +107,6 @@ in
     extraOptions = lib.optionalString (config.nix.package == pkgs.nixFlakes)
       "experimental-features = nix-command flakes";
   };
-
-  # i18n.inputMethod.enabled = "ibus";
-  # i18n.inputMethod.ibus.engines = [ pkgs.ibus-engines.rime ];
-  i18n.inputMethod.enabled = "fcitx5";
-  i18n.inputMethod.fcitx5.addons = [ pkgs.fcitx5-chinese-addons ];
 
   # https://nixos.wiki/wiki/Podman
   virtualisation.podman.enable = true;
