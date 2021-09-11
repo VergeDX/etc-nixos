@@ -8,6 +8,7 @@
       ./xserver.nix
       ./services.nix
       ./virtualisation.nix
+      ./programs.nix
 
       # Include the results of the hardware scan.
       ./hardware.nix
@@ -29,10 +30,6 @@
     alsa.support32Bit = true;
     pulse.enable = true;
   };
-
-  # Define a user account. Don't forget to set a password with ‘passwd’.
-  programs.fish.enable = true;
-  programs.thefuck.enable = true;
 
   # https://nixos.wiki/wiki/Android
   programs.adb.enable = true;
@@ -57,10 +54,6 @@
   # $ nix search wget
   environment.systemPackages = with pkgs; [ home-manager gjs libimobiledevice ];
 
-  # Some programs need SUID wrappers, can be configured further or are
-  # started in user sessions.
-  programs.mtr.enable = true;
-
   # This value determines the NixOS release from which the default
   # settings for stateful data, like file locations and database versions
   # on your system were taken. It‘s perfectly fine and recommended to leave
@@ -77,11 +70,6 @@
       "experimental-features = nix-command flakes";
   };
 
-  # https://github.com/NixOS/nixpkgs/issues/132389
-  # https://github.com/NixOS/nixpkgs/pull/132522
-  programs.neovim.enable = true;
-  programs.neovim.viAlias = true;
-
   # https://discourse.nixos.org/t/gdm-monitor-configuration/6356
   # https://github.com/NixOS/nixpkgs/pull/107850
   # https://discourse.nixos.org/t/in-configuration-nix-can-i-read-a-value-from-a-file/4809
@@ -90,9 +78,6 @@
       # https://github.com/jluttine/nixos-configuration/blob/master/common.nix
       monitors_xml = builtins.readFile /home/vanilla/.config/monitors.xml; in
     [ "L+ /run/gdm/.config/monitors.xml - - - - ${pkgs.writeText "gdm-monitors.xml" monitors_xml}" ];
-
-  # Required by https://github.com/blackjackshellac/eclipse
-  programs.gpaste.enable = true;
 
   # https://nixos.org/manual/nixpkgs/stable/#submitting-changes-tested-with-sandbox
   nix.useSandbox = true;
