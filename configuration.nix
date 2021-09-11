@@ -22,8 +22,11 @@ in
   boot.loader.efi.canTouchEfiVariables = true;
   boot.loader.grub.font = hack-regular-ttf;
 
-  # networking.hostName = "nixos"; # Define your hostname.
-  # networking.wireless.enable = true;  # Enables wireless support via wpa_supplicant.
+  networking.hostName = "nixos"; # Define your hostname.
+  networking.wireless.enable = true; # Enables wireless support via wpa_supplicant.
+  networking.wireless.interfaces = [ "wlp0s20f3" ];
+  # https://github.com/NixOS/nixpkgs/issues/110736
+  networking.wireless.userControlled.enable = true;
 
   # Set your time zone.
   # time.timeZone = "Europe/Amsterdam";
