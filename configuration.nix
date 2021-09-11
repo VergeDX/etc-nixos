@@ -74,9 +74,8 @@
   # https://github.com/NixOS/nixpkgs/pull/107850
   # https://discourse.nixos.org/t/in-configuration-nix-can-i-read-a-value-from-a-file/4809
   systemd.tmpfiles.rules =
-    let
-      # https://github.com/jluttine/nixos-configuration/blob/master/common.nix
-      monitors_xml = builtins.readFile /home/vanilla/.config/monitors.xml; in
+    # https://github.com/jluttine/nixos-configuration/blob/master/common.nix
+    let monitors_xml = builtins.readFile /home/vanilla/.config/monitors.xml; in
     [ "L+ /run/gdm/.config/monitors.xml - - - - ${pkgs.writeText "gdm-monitors.xml" monitors_xml}" ];
 
   # https://nixos.org/manual/nixpkgs/stable/#submitting-changes-tested-with-sandbox
