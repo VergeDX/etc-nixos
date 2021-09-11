@@ -12,7 +12,7 @@
       ./nix.nix
 
       # Include the results of the hardware scan.
-      ./hardware.nix
+      ./hardware/hardware.nix
     ];
 
   # Set your time zone.
