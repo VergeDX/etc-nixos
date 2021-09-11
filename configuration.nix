@@ -8,6 +8,7 @@ in
       ./network.nix
       ./i18n.nix
       ./xserver.nix
+      ./services.nix
 
       # Include the results of the hardware scan.
       ./hardware.nix
@@ -15,12 +16,6 @@ in
 
   # Set your time zone.
   time.timeZone = "Asia/Shanghai";
-
-  # Enable CUPS to print documents.
-  services.printing.enable = true;
-  # https://nixos.wiki/wiki/Printing
-  services.avahi.enable = true;
-  services.avahi.nssmdns = true;
 
   # Enable sound.
   sound.enable = true;
@@ -66,13 +61,6 @@ in
   # Some programs need SUID wrappers, can be configured further or are
   # started in user sessions.
   programs.mtr.enable = true;
-
-  # List services that you want to enable:
-
-  # Enable the OpenSSH daemon.
-  services.openssh.enable = true;
-  services.openssh.passwordAuthentication = false;
-  services.openssh.ports = [ 622 ];
 
   # This value determines the NixOS release from which the default
   # settings for stateful data, like file locations and database versions
