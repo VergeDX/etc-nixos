@@ -16,13 +16,14 @@
   # boot.kernelModules = [ "kvm-intel" ];
   boot.extraModulePackages = [ ];
 
-  # https://nixos.wiki/wiki/Accelerated_Video_Playback
-  hardware.opengl.enable = true;
-  hardware.opengl.extraPackages =
-    let vaapiIntel = pkgs.vaapiIntel.override { enableHybridCodec = true; };
-    in with pkgs; [ intel-media-driver vaapiIntel vaapiVdpau libvdpau-va-gl ];
-  hardware.opengl.extraPackages32 = with pkgs.pkgsi686Linux; [ vaapiIntel ];
-
   # https://nixos.wiki/wiki/Dual_Booting_NixOS_and_Windows
   time.hardwareClockInLocalTime = true;
+
+  # https://nixos.wiki/wiki/Accelerated_Video_Playback
+  nixpkgs.config.packageOverrides = pkgs: { vaapiIntel = pkgs.vaapiIntel.override { enableHybridCodec = true; }; };
+  hardware.opengl = {
+    enable = true;
+    extraPackages = with pkgs; [ intel-media-driver vaapiIntel vaapiVdpau libvdpau-va-gl ];
+    extraPackages32 = with pkgs.pkgsi686Linux; [ vaapiIntel ];
+  };
 }
