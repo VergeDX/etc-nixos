@@ -1,4 +1,4 @@
-{ config, pkgs, ... }:
+{ pkgs, ... }:
 let nvidia-offload = pkgs.writeShellScriptBin "nvidia-offload" ''
   export __NV_PRIME_RENDER_OFFLOAD=1
   export __NV_PRIME_RENDER_OFFLOAD_PROVIDER=NVIDIA-G0
@@ -13,7 +13,6 @@ in
   nixpkgs.config.allowUnfree = true;
 
   # https://github.com/NickCao/flakes/blob/baaa99e3b32ca01069443aa0466c6aeefe3620a4/nixos/local/configuration.nix#L104
-  hardware.nvidia.package = config.boot.kernelPackages.nvidiaPackages.vulkan_beta;
   hardware.nvidia.modesetting.enable = true;
   # hardware.nvidia.nvidiaSettings = false;
 
