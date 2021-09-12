@@ -6,9 +6,8 @@
   boot.loader.grub.font = "${pkgs.hack-font}/share/fonts/hack/Hack-Regular.ttf";
 
   # https://nixos.wiki/wiki/Linux_kernel
-  # https://github.com/NixOS/nixpkgs/issues/129233
-  # https://github.com/NixOS/nixpkgs/pull/128785#issuecomment-873219393
-  boot.kernelPackages = pkgs.linuxPackages_zen;
+  # https://wiki.archlinux.org/title/Kernel_(%E7%AE%80%E4%BD%93%E4%B8%AD%E6%96%87)
+  boot.kernelPackages = pkgs.linuxPackages_lqx; # pkgs.linuxPackages_xanmod
 
   # https://gist.github.com/manuelmazzuola/4ffa90f5f5d0ddacda96#file-configuration-nix-L22
   boot.kernel.sysctl = { "kernel.sysrq" = 1; };

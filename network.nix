@@ -32,8 +32,4 @@ in
   networking.firewall.allowPing = false;
   networking.firewall.rejectPackets = true;
   services.fail2ban.enable = true;
-
-  # https://mnguyen.io/blog/running-nixos-in-production/
-  boot.kernelModules = [ "tcp_bbr" ];
-  boot.kernel.sysctl."net.ipv4.tcp_congestion_control" = "bbr";
 }
