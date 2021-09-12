@@ -1,4 +1,4 @@
-{ ... }:
+{ config, ... }:
 {
   nixpkgs.config.allowUnfree = true;
 
@@ -11,4 +11,7 @@
   services.xserver.videoDrivers = [ "modeset" "nvidia" ];
   hardware.nvidia.powerManagement.enable = true;
   hardware.nvidia.modesetting.enable = true;
+
+  # https://www.reddit.com/r/NixOS/comments/6n4rnj/declaratively_specify_nvidia_version/
+  hardware.nvidia.package = config.boot.kernelPackages.nvidiaPackages.vulkan_beta;
 }
