@@ -12,14 +12,19 @@
 
   # https://gist.github.com/manuelmazzuola/4ffa90f5f5d0ddacda96#file-configuration-nix-L22
   boot.kernel.sysctl = { "kernel.sysrq" = 1; };
-  boot.kernelParams = [ "pcie_aspm.policy=performance" ];
+  # https://github.com/NickCao/flakes/blob/baaa99e3b32ca01069443aa0466c6aeefe3620a4/nixos/local/configuration.nix#L79
+  boot.kernelParams = [
+    "pcie_aspm.policy=performance"
+    "nowatchdog"
+    "systemd.unified_cgroup_hierarchy=1"
+  ];
+  # https://wiki.archlinux.org/title/intel_graphics
+  boot.extraModprobeConfig = ''
+    options i915 enable_guc=2
+    options i915 enable_fbc=1
+    options i915 fastboot=1
+  '';
 
   # https://github.com/slacka/WoeUSB/issues/299
   boot.supportedFilesystems = [ "ntfs" ];
-
-  # https://gist.github.com/shamil/62935d9b456a6f9877b5
-  # https://wiki.archlinux.org/title/Kernel_module_(%E7%AE%80%E4%BD%93%E4%B8%AD%E6%96%87)
-  boot.extraModprobeConfig = "options nbd max_part=8";
-  # https://github.com/NixOS/nixpkgs/issues/20906
-  boot.kernelModules = [ "nbd" ];
 }
