@@ -7,12 +7,12 @@
   hardware.nvidia.modesetting.enable = true;
   # hardware.nvidia.nvidiaSettings = false;
 
-  hardware.nvidia.prime.sync.enable = true;
+  hardware.nvidia.prime.offload.enable = true;
   hardware.nvidia.prime.intelBusId = "PCI:0:2:0";
   hardware.nvidia.prime.nvidiaBusId = "PCI:1:0:0";
 
-  # hardware.nvidia.powerManagement.enable = true;
-  # hardware.nvidia.powerManagement.finegrained = true;
+  hardware.nvidia.powerManagement.enable = true;
+  hardware.nvidia.powerManagement.finegrained = true;
 
   # https://github.com/NickCao/flakes/blob/baaa99e3b32ca01069443aa0466c6aeefe3620a4/nixos/local/configuration.nix#L160
   services.xserver.videoDrivers = [ "nvidia" ];
