@@ -2,16 +2,17 @@
 {
   nixpkgs.config.allowUnfree = true;
 
-  # https://nixos.wiki/wiki/Nvidia
+  # https://github.com/NickCao/flakes/blob/baaa99e3b32ca01069443aa0466c6aeefe3620a4/nixos/local/configuration.nix#L104
+  hardware.nvidia.modesetting.enable = true;
+  # hardware.nvidia.nvidiaSettings = false;
+
   hardware.nvidia.prime.offload.enable = true;
   hardware.nvidia.prime.intelBusId = "PCI:0:2:0";
   hardware.nvidia.prime.nvidiaBusId = "PCI:1:0:0";
 
-  # https://github.com/NixOS/nixpkgs/issues/98942
-  services.xserver.videoDrivers = [ "modeset" "nvidia" ];
   hardware.nvidia.powerManagement.enable = true;
-  hardware.nvidia.modesetting.enable = true;
+  hardware.nvidia.powerManagement.finegrained = true;
 
-  # https://www.reddit.com/r/NixOS/comments/6n4rnj/declaratively_specify_nvidia_version/
-  hardware.nvidia.package = config.boot.kernelPackages.nvidiaPackages.vulkan_beta;
+  # https://github.com/NickCao/flakes/blob/baaa99e3b32ca01069443aa0466c6aeefe3620a4/nixos/local/configuration.nix#L160
+  services.xserver.videoDrivers = [ "nvidia" ];
 }
