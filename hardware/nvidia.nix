@@ -26,7 +26,7 @@ in
   # https://github.com/NickCao/flakes/blob/baaa99e3b32ca01069443aa0466c6aeefe3620a4/nixos/local/configuration.nix#L160
   services.xserver.videoDrivers = [ "nvidia" ];
 
-  # @NickCao & @lilydjwg: X server start too fast to load nvidia driver.
+  # https://wiki.archlinux.org/title/Kernel_mode_setting#Early_KMS_start
   boot.initrd.enable = true;
-  boot.initrd.kernelModules = [ "nvidia" ];
+  boot.initrd.kernelModules = [ "nvidia" "nvidia_modeset" "nvidia_uvm" "nvidia_drm" ];
 }
