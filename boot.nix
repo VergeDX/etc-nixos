@@ -8,6 +8,9 @@
   # https://nixos.wiki/wiki/Linux_kernel
   # https://wiki.archlinux.org/title/Kernel_(%E7%AE%80%E4%BD%93%E4%B8%AD%E6%96%87)
   boot.kernelPackages = pkgs.linuxPackages_zen;
+  # https://mnguyen.io/blog/running-nixos-in-production/
+  boot.kernelModules = [ "tcp_bbr" ];
+  boot.kernel.sysctl = { "net.ipv4.tcp_congestion_control" = "bbr"; };
 
   # https://gist.github.com/manuelmazzuola/4ffa90f5f5d0ddacda96#file-configuration-nix-L22
   boot.kernel.sysctl = { "kernel.sysrq" = 1; };
