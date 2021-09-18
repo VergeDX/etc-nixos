@@ -18,5 +18,5 @@ in
   # https://nixos.wiki/wiki/Virtualbox
   virtualisation.virtualbox.host.enable = true;
   users.extraGroups.vboxusers.members = [ "vanilla" ];
-  # virtualisation.virtualbox.host.enableExtensionPack = true;
+  virtualisation.virtualbox.host.enableExtensionPack = true;
 }
