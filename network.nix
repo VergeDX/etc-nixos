@@ -1,7 +1,7 @@
 { ... }:
 # https://userbase.kde.org/KDEConnect
-let kde-connect-port-range = { from = 1714; to = 1764; };
-in
+# let kde-connect-port-range = { from = 1714; to = 1764; };
+# in
 {
   networking.hostName = "nixos"; # Define your hostname.
 
@@ -22,10 +22,10 @@ in
   # networking.proxy.noProxy = "127.0.0.1,localhost,internal.domain";
 
   # Open ports in the firewall.
-  networking.firewall.allowedTCPPorts = [ 8080 25565 ]; # 8889 ];
+  networking.firewall.allowedTCPPorts = [ 8080 8889 ];
   # networking.firewall.allowedUDPPorts = [ ... ];
-  networking.firewall.allowedTCPPortRanges = [ kde-connect-port-range ];
-  networking.firewall.allowedUDPPortRanges = [ kde-connect-port-range ];
+  # networking.firewall.allowedTCPPortRanges = [ kde-connect-port-range ];
+  # networking.firewall.allowedUDPPortRanges = [ kde-connect-port-range ];
   # Or disable the firewall altogether.
   # networking.firewall.enable = false;
 
