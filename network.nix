@@ -31,5 +31,4 @@
 
   networking.firewall.allowPing = false;
   networking.firewall.rejectPackets = true;
-  services.fail2ban.enable = true;
 }
