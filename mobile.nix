@@ -7,4 +7,5 @@
 
   # https://nixos.wiki/wiki/IOS
   services.usbmuxd.enable = true;
+  environment.systemPackages = [ pkgs.libimobiledevice ];
 }
