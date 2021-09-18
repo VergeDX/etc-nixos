@@ -12,6 +12,9 @@
   boot.kernelModules = [ "tcp_bbr" ];
   boot.kernel.sysctl = { "net.ipv4.tcp_congestion_control" = "bbr"; };
 
+  # https://opensource.com/article/21/8/linux-kernel-module
+  zramSwap.enable = true;
+
   # https://gist.github.com/manuelmazzuola/4ffa90f5f5d0ddacda96#file-configuration-nix-L22
   boot.kernel.sysctl = { "kernel.sysrq" = 1; };
   # https://github.com/NickCao/flakes/blob/baaa99e3b32ca01069443aa0466c6aeefe3620a4/nixos/local/configuration.nix#L79
