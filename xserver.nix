@@ -14,6 +14,10 @@
   # https://wiki.archlinux.org/title/GNOME/Flashback
   services.xserver.desktopManager.gnome.flashback.enableMetacity = true;
 
+  # https://nixos.wiki/wiki/GNOME#Excluding_some_GNOME_applications_from_the_default_install
+  services.gnome.core-utilities.enable = false;
+  services.gnome.core-developer-tools.enable = false;
+
   # Configure keymap in X11
   services.xserver.layout = "us";
   # https://wiki.archlinux.org/title/Xorg/Keyboard_configuration
