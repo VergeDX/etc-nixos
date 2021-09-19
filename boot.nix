@@ -32,4 +32,7 @@
 
   # https://github.com/slacka/WoeUSB/issues/299
   boot.supportedFilesystems = [ "ntfs" ];
+
+  boot.tmpOnTmpfs = true;
+  boot.cleanTmpDir = true;
 }
