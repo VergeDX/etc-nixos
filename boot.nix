@@ -35,4 +35,7 @@
 
   boot.tmpOnTmpfs = true;
   boot.cleanTmpDir = true;
+
+  boot.devSize = "32m";
+  boot.devShmSize = "256m";
 }
