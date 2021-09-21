@@ -3,7 +3,7 @@
 # let kde-connect-port-range = { from = 1714; to = 1764; };
 # in
 {
-  networking.hostName = "nixos"; # Define your hostname.
+  networking.hostName = "nixos-laptop"; # Define your hostname.
 
   # The global useDHCP flag is deprecated, therefore explicitly set to false here.
   # Per-interface useDHCP will be mandatory in the future, so this generated config
