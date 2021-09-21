@@ -12,4 +12,10 @@
 
   # btrfs filesystem defragment -r -v -czstd /
   # nix.readOnlyStore = false;
+
+  # https://mirrors.bfsu.edu.cn/help/nix/
+  nix.binaryCaches = [
+    "https://mirrors.bfsu.edu.cn/nix-channels/store"
+    "https://cache.nixos.org/"
+  ];
 }
