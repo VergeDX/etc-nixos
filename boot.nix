@@ -37,5 +37,6 @@
   boot.cleanTmpDir = true;
 
   boot.devSize = "32m";
-  boot.devShmSize = "256m";
+  # https://forums.gentoo.org/viewtopic-t-1103400-start-0.html
+  boot.devShmSize = "8192m";
 }
