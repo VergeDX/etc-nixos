@@ -6,13 +6,12 @@
   networking.hostName = "nixos-laptop"; # Define your hostname.
   networking.domain = "vanilla.local";
 
-  # The global useDHCP flag is deprecated, therefore explicitly set to false here.
-  # Per-interface useDHCP will be mandatory in the future, so this generated config
-  # replicates the default behaviour.
-  networking.useDHCP = false;
   networking.interfaces.enp3s0f1.useDHCP = true;
-  # networking.interfaces.wlp0s20f0u2u1u2.useDHCP = true;
   networking.interfaces.wlp0s20f3.useDHCP = true;
+  # https://wiki.archlinux.org/title/Systemd-networkd_(%E7%AE%80%E4%BD%93%E4%B8%AD%E6%96%87)#[Network]_%E5%B0%8F%E8%8A%82
+  systemd.network.networks."40-wlp0s20f3".networkConfig = {
+    "MulticastDNS" = true;
+  };
 
   # Use networkd instead of buggy dhcpcd.
   networking.useNetworkd = true;
