@@ -6,8 +6,8 @@
   networking.hostName = "NixOS-Laptop"; # Define your hostname.
   networking.domain = "vanilla.local";
 
-  networking.interfaces.enp3s0f1.useDHCP = true;
-  networking.interfaces.wlp0s20f3.useDHCP = true;
+  networking.interfaces."enp3s0f1".useDHCP = true;
+  networking.interfaces."wlp0s20f3".useDHCP = true;
 
   # https://wiki.archlinux.org/title/Systemd-resolved#mDNS
   services.resolved.extraConfig = "MulticastDNS=yes";
