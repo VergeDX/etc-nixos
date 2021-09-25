@@ -3,7 +3,7 @@
 # let kde-connect-port-range = { from = 1714; to = 1764; };
 # in
 {
-  networking.hostName = "nixos-laptop"; # Define your hostname.
+  networking.hostName = "NixOS-Laptop"; # Define your hostname.
   networking.domain = "vanilla.local";
 
   networking.interfaces.enp3s0f1.useDHCP = true;
