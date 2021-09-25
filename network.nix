@@ -8,9 +8,12 @@
 
   networking.interfaces.enp3s0f1.useDHCP = true;
   networking.interfaces.wlp0s20f3.useDHCP = true;
-  # https://wiki.archlinux.org/title/Systemd-networkd_(%E7%AE%80%E4%BD%93%E4%B8%AD%E6%96%87)#[Network]_%E5%B0%8F%E8%8A%82
-  systemd.network.networks."40-wlp0s20f3".networkConfig = {
-    "MulticastDNS" = true;
+
+  # https://wiki.archlinux.org/title/Systemd-resolved#mDNS
+  services.resolved.extraConfig = "MulticastDNS=yes";
+  systemd.network.networks."40-wlp0s20f3" = {
+    networkConfig = { "MulticastDNS" = true; };
+    linkConfig = { "Multicast" = "yes"; };
   };
 
   # Use networkd instead of buggy dhcpcd.
@@ -23,7 +26,7 @@
 
   # Open ports in the firewall.
   networking.firewall.allowedTCPPorts = [ 8080 8889 ];
-  # networking.firewall.allowedUDPPorts = [ ... ];
+  networking.firewall.allowedUDPPorts = [ 5353 ];
   # networking.firewall.allowedTCPPortRanges = [ kde-connect-port-range ];
   # networking.firewall.allowedUDPPortRanges = [ kde-connect-port-range ];
   # Or disable the firewall altogether.
