@@ -18,10 +18,6 @@
   services.gnome.core-utilities.enable = false;
   services.gnome.core-developer-tools.enable = false;
 
-  # https://nixos.wiki/wiki/GNOME#Systray_Icons
-  environment.systemPackages = with pkgs; [ gnomeExtensions.appindicator ];
-  services.udev.packages = with pkgs; [ gnome3.gnome-settings-daemon ];
-
   # Configure keymap in X11
   services.xserver.layout = "us";
   # https://wiki.archlinux.org/title/Xorg/Keyboard_configuration
