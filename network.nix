@@ -9,12 +9,9 @@
   networking.interfaces."enp3s0f1".useDHCP = true;
   networking.interfaces."wlp0s20f3".useDHCP = true;
 
-  # https://wiki.archlinux.org/title/Systemd-resolved#mDNS
-  services.resolved.extraConfig = "MulticastDNS=yes";
-  systemd.network.networks."40-wlp0s20f3" = {
-    networkConfig = { "MulticastDNS" = true; };
-    linkConfig = { "Multicast" = "yes"; };
-  };
+  # https://github.com/NixOS/nixpkgs/issues/98050#issuecomment-860272122
+  services.avahi = { enable = true; nssmdns = true; };
+  services.avahi.publish = { enable = true; domain = true; addresses = true; };
 
   # Use networkd instead of buggy dhcpcd.
   networking.useNetworkd = true;
