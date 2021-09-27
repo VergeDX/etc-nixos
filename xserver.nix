@@ -25,4 +25,13 @@
 
   # Enable touchpad support (enabled default in most desktopManager).
   services.xserver.libinput.enable = true;
+
+  environment.systemPackages = [
+    pkgs.epiphany # ------ # Web
+    pkgs.gnome.geary # --- # Mail
+    pkgs.gnome.gedit # --- # Calendar
+    pkgs.lollypop # ------ # Music
+    pkgs.gnome.totem # --- # Video
+    pkgs.gnome.eog # ----- # Photos
+  ];
 }
