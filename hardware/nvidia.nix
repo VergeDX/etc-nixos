@@ -29,4 +29,13 @@ in
   # https://wiki.archlinux.org/title/Kernel_mode_setting#Early_KMS_start
   boot.initrd.enable = true;
   boot.initrd.kernelModules = [ "nvidia" "nvidia_modeset" "nvidia_uvm" "nvidia_drm" ];
+
+  # https://wiki.archlinux.org/title/PRIME#When_an_application_is_rendered_with_the_discrete_card,_it_only_renders_a_black_screen
+  services.xserver.config = ''
+    Section "Device"
+        Identifier "Intel Graphics"
+        Driver "intel"
+        Option "DRI" "3"
+    EndSection
+  '';
 }
