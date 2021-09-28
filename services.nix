@@ -1,4 +1,4 @@
-{ ... }:
+{ pkgs, ... }:
 {
   # Enable the OpenSSH daemon.
   services.openssh.enable = true;
@@ -13,4 +13,9 @@
 
   # https://github.com/NickCao/flakes/blob/baaa99e3b32ca01069443aa0466c6aeefe3620a4/nixos/local/configuration.nix#L133
   services.fstrim.enable = true;
+
+  # https://nixos.org/manual/nixos/stable/#sec-replace-modules
+  imports = [ <nixos-unstable/nixos/modules/services/databases/influxdb2.nix> ];
+  services.influxdb2.enable = true;
+  services.telegraf.enable = true;
 }
