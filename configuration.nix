@@ -15,9 +15,6 @@
 
       # Include the results of the hardware scan.
       ./hardware/hardware.nix
-
-      # https://github.com/ryantm/agenix#nix-channel
-      <agenix/modules/age.nix>
     ];
 
   age.secrets = {
