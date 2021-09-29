@@ -17,8 +17,8 @@
   services.influxdb2.enable = true;
   services.telegraf.enable = true;
   services.telegraf.environmentFiles = [
-    /run/secrets/INFLUX_TOKEN.env
-    /run/secrets/config.env
+    /run/secrets/telegraf/INFLUX_TOKEN.env
+    /run/secrets/telegraf/config.env
   ];
 
   systemd.services."telegraf".serviceConfig = {
