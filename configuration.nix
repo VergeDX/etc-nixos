@@ -10,7 +10,6 @@
       ./virtualisation.nix
       ./programs.nix
       ./nix.nix
-      ./mobile.nix
       ./audio.nix
       ./users.nix
 
