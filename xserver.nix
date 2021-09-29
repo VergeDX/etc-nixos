@@ -34,4 +34,8 @@
     pkgs.gnome.totem # --- # Video
     pkgs.gnome.eog # ----- # Photos
   ];
+
+  # https://github.com/NixOS/nixpkgs/pull/107850
+  systemd.services."display-manager".preStart =
+    "cp /home/vanilla/.config/monitors.xml /run/gdm/.config/monitors.xml";
 }
