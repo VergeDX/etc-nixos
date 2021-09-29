@@ -20,6 +20,11 @@
   age.secrets = {
     "telegraf/INFLUX_TOKEN.env".file = ./secrets/telegraf/INFLUX_TOKEN-env.age;
     "telegraf/config.env".file = ./secrets/telegraf/config-env.age;
+
+    "influxdb2/influxdb-selfsigned.crt".file =
+      ./secrets/influxdb2/influxdb-selfsigned-crt.age;
+    "influxdb2/influxdb-selfsigned.key".file =
+      ./secrets/influxdb2/influxdb-selfsigned-key.age;
   };
 
   # Set your time zone.

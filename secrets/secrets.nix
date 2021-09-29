@@ -6,4 +6,7 @@ in
 {
   "telegraf/INFLUX_TOKEN-env.age".publicKeys = [ laptop vanilla ];
   "telegraf/config-env.age".publicKeys = [ laptop vanilla ];
+
+  "influxdb2/influxdb-selfsigned-crt.age".publicKeys = [ laptop vanilla ];
+  "influxdb2/influxdb-selfsigned-key.age".publicKeys = [ laptop vanilla ];
 }
