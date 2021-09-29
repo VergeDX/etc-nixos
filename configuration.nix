@@ -6,10 +6,7 @@
       ./network.nix
       ./i18n.nix
       ./xserver.nix
-
       ./services.nix
-      ./xrdp.nix
-
       ./virtualisation.nix
       ./programs.nix
       ./nix.nix

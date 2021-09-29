@@ -18,4 +18,8 @@
   imports = [ <nixos-unstable/nixos/modules/services/databases/influxdb2.nix> ];
   services.influxdb2.enable = true;
   services.telegraf.enable = true;
+
+  environment.systemPackages = with pkgs; [ xmonad-with-packages xterm ];
+  services.xrdp.enable = true;
+  services.xrdp.defaultWindowManager = "xmonad";
 }
