@@ -1,4 +1,4 @@
-{ pkgs, ... }:
+{ pkgs, lib, config, ... }:
 {
   # Enable the OpenSSH daemon.
   services.openssh.enable = true;
@@ -18,6 +18,15 @@
   imports = [ <nixos-unstable/nixos/modules/services/databases/influxdb2.nix> ];
   services.influxdb2.enable = true;
   services.telegraf.enable = true;
+
+  services.telegraf.environmentFiles = [
+    /run/secrets/INFLUX_TOKEN.env
+    /run/secrets/config.env
+  ];
+
+  systemd.services."telegraf".serviceConfig = {
+    ExecStart = lib.mkForce "${config.services.telegraf.package}/bin/telegraf --config $config";
+  };
 
   environment.systemPackages = with pkgs; [ xmonad-with-packages xterm ];
   services.xrdp.enable = true;
