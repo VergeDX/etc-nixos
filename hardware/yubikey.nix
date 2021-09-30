@@ -6,6 +6,7 @@
   # https://nixos.wiki/wiki/Yubikey#GPG_and_SSH
   programs.ssh.startAgent = false;
   programs.gnupg.agent = { enable = true; enableSSHSupport = true; };
+  programs.gnupg.agent.pinentryFlavor = "curses";
   environment.shellInit = ''
     export GPG_TTY="$(tty)"
     gpg-connect-agent /bye
