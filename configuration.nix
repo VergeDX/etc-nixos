@@ -6,7 +6,10 @@
       ./network.nix
       ./i18n.nix
       ./xserver.nix
+
       ./services/services.nix
+      ./services/openssh-fail2ban.nix
+
       ./virtualisation.nix
       ./programs.nix
       ./nix.nix
