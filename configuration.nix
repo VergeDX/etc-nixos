@@ -9,6 +9,7 @@
 
       ./services/services.nix
       ./services/openssh-fail2ban.nix
+      ./services/influxdb2.nix
 
       ./virtualisation.nix
       ./programs.nix

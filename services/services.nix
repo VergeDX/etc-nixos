@@ -3,30 +3,11 @@
   # https://github.com/NickCao/flakes/blob/baaa99e3b32ca01069443aa0466c6aeefe3620a4/nixos/local/configuration.nix#L133
   services.fstrim.enable = true;
 
-  services.influxdb2.enable = true;
   services.telegraf.enable = true;
   services.telegraf.environmentFiles = [
     /run/secrets/telegraf/INFLUX_TOKEN.env
     /run/secrets/telegraf/config.env
   ];
-
-  # https://www.freedesktop.org/software/systemd/man/systemd.exec.html#Credentials
-  systemd.services."influxdb2".serviceConfig = {
-    # ExecStart = lib.mkForce "/run/current-system/sw/bin/echo $CREDENTIALS_DIRECTORY";
-    LoadCredential = [
-      "crt:/run/secrets/influxdb2/influxdb-selfsigned.crt"
-      "key:/run/secrets/influxdb2/influxdb-selfsigned.key"
-    ];
-  };
-
-  # https://docs.influxdata.com/influxdb/v2.0/security/enable-tls/
-  services.influxdb2.settings =
-    let CREDENTIALS_DIRECTORY = "/run/credentials/influxdb2.service";
-    in
-    {
-      "tls-cert" = "${CREDENTIALS_DIRECTORY}/crt";
-      "tls-key" = "${CREDENTIALS_DIRECTORY}/key";
-    };
 
   systemd.services."telegraf".serviceConfig = let dir = "/tmp/telegraf/"; in
     {
