@@ -9,7 +9,8 @@
   programs.gnupg.agent.pinentryFlavor = "curses";
   environment.shellInit = ''
     export GPG_TTY="$(tty)"
-    gpg-connect-agent /bye
+    # https://github.com/Yubico/yubico-piv-tool/issues/102#issuecomment-303239922
+    gpg-connect-agent updatestartuptty /bye
     export SSH_AUTH_SOCK="/run/user/$UID/gnupg/S.gpg-agent.ssh"
   '';
 
